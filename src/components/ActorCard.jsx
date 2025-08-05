@@ -3,7 +3,15 @@ import React from 'react';
 function ActorCard({ actor, onToggleFollow, isFollowed }) {
   return (
     <div className="rounded-xl shadow-lg p-6 bg-white dark:bg-gray-800 w-full max-w-xs text-center transition-transform transform hover:scale-105">
-      <img src={actor.avatar} alt={actor.name} className="w-24 h-24 mx-auto rounded-full mb-4 object-cover" />
+      <img
+        src={actor.avatar}
+        alt={actor.name}
+        className="w-24 h-24 mx-auto rounded-full mb-4 object-cover border-4 border-indigo-500"
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src = 'https://via.placeholder.com/100?text=No+Image';
+        }}
+      />
       <h2 className="text-xl font-semibold mb-1">{actor.name}</h2>
       <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">{actor.bio}</p>
       <button
